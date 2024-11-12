@@ -1,0 +1,24 @@
+package config
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/firmanJS/fiber-with-mongo/config"
+	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
+)
+
+func Connect() (*mongo.Database, error) {
+
+	clientOptions := options.Client()
+	clientOptions.ApplyURI(config.Config("MONGODB_URL"))
+	client, err := mongo.Connect(context.TODO(), clientOptions)
+	if err != nil {
+		return nil, err
+	}
+
+	fmt.Println("Connected to MongoDB!")
+
+	return client.Database(config.Config("MONGO_DB_NAME")), nil
+}
