@@ -13,29 +13,6 @@ import (
 	"go.mongodb.org/mongo-driver/v2/bson"
 )
 
-// func Test(c *fiber.Ctx) error {
-
-// 	resMapping := []model.User{
-// 		{
-// 			ID:       1,
-// 			UserName: "user1",
-// 			Email:    "asdsd",
-// 		},
-// 		{
-// 			ID:       2,
-// 			UserName: "user2",
-// 			Email:    "asdsd2",
-// 		},
-// 	}
-// 	res := helper.ResultMessage{
-// 		Code:    200,
-// 		Data:    resMapping,
-// 		Message: "",
-// 	}
-
-// 	return c.JSON(res)
-// }
-
 func TestUser(c *fiber.Ctx) error {
 
 	var ctx = context.Background()
