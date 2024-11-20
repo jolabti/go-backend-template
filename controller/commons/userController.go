@@ -1,4 +1,4 @@
-package controller
+package commons
 
 import (
 	"context"
@@ -17,13 +17,17 @@ func TestUser(c *fiber.Ctx) error {
 
 	var ctx = context.Background()
 
+	// redisConnector := configurationDatabase.NewRedisWrapper(0)
+
+	// redisConnector.Set("testcoffee", "hot", 60*time.Second)
+
 	db, err := configurationDatabase.Connect()
 
 	if err != nil {
 		log.Fatal(err.Error())
 	}
 
-	csr, err := db.Collection("users").Find(ctx, bson.M{})
+	csr, err := db.Collection("content-section").Find(ctx, bson.M{})
 	if err != nil {
 		log.Fatal(err.Error())
 	}
