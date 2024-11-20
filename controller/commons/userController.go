@@ -1,4 +1,4 @@
-package controller
+package commons
 
 import (
 	"context"
@@ -13,32 +13,13 @@ import (
 	"go.mongodb.org/mongo-driver/v2/bson"
 )
 
-// func Test(c *fiber.Ctx) error {
-
-// 	resMapping := []model.User{
-// 		{
-// 			ID:       1,
-// 			UserName: "user1",
-// 			Email:    "asdsd",
-// 		},
-// 		{
-// 			ID:       2,
-// 			UserName: "user2",
-// 			Email:    "asdsd2",
-// 		},
-// 	}
-// 	res := helper.ResultMessage{
-// 		Code:    200,
-// 		Data:    resMapping,
-// 		Message: "",
-// 	}
-
-// 	return c.JSON(res)
-// }
-
 func TestUser(c *fiber.Ctx) error {
 
 	var ctx = context.Background()
+
+	// redisConnector := configurationDatabase.NewRedisWrapper(0)
+
+	// redisConnector.Set("testcoffee", "hot", 60*time.Second)
 
 	db, err := configurationDatabase.Connect()
 
@@ -46,7 +27,7 @@ func TestUser(c *fiber.Ctx) error {
 		log.Fatal(err.Error())
 	}
 
-	csr, err := db.Collection("users").Find(ctx, bson.M{})
+	csr, err := db.Collection("content-section").Find(ctx, bson.M{})
 	if err != nil {
 		log.Fatal(err.Error())
 	}
